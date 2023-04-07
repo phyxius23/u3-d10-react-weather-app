@@ -1,10 +1,19 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Search from "./components/Search";
+import CityToday from "./components/CityToday";
+import cityJson from "./data/file.json";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Titolo</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/city/:city" element={<CityToday />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
