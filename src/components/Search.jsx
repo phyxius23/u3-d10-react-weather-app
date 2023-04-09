@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import logo from "../icons/02d.png";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -19,7 +20,6 @@ const Search = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const fetchData = async (url) => {
     try {
       const response = await fetch(baseEndpoint + query + "&appid=" + key);
       if (response.ok) {
@@ -32,21 +32,20 @@ const Search = () => {
     } catch (error) {
       console.log(error.message);
     }
-    // };
-
-    // const queryCoord = await fetchData();
-    // dispatch({ type: "ADD_CITY", payload: cities });
   };
 
   return (
     <>
-      <Container>
+      <Container className="search-page">
         <Row className="justify-content-center">
           <Col xs={9}>
-            <h1>Search Page</h1>
+            <div className="img-wrapper">
+              <Image fluid src={logo} />
+            </div>
+            <h1>EpicSearch</h1>
             <Form className="d-flex" onSubmit={handleSubmit}>
               <Form.Control type="search" className="me-2" value={query} onChange={handleChange} />
-              <Button type="submit" variant="outline-success">
+              <Button type="submit" variant="outline-primary">
                 Search
               </Button>
             </Form>
