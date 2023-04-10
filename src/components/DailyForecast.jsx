@@ -83,6 +83,13 @@ const DailyForecast = () => {
 
         setForecast(() => data);
         console.log(forecast);
+
+        forecast.list.forEach((item, index) => {
+          if (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) {
+            arr.push(item);
+            console.log(arr);
+          }
+        });
       } else {
         alert("Error fetching results");
       }
