@@ -120,7 +120,8 @@ h2 {
 .daily-forecast h2 span {
   color: #fccf57;
 }
-.card {
+.daily-forecast .card,
+.next-forecast .styles-module_item-container__a8zaY {
   background: rgba(19,20,64,.5);
   color: #fff;
   background: rgba(255, 255, 255, 0.03);
@@ -128,52 +129,80 @@ h2 {
   font-size: 13px;
   font-weight: 300;
 }
-.card .date > span:first-of-type{
+.daily-forecast .card .date > span:first-of-type{
   font-size: 20px;
   font-weight: 400;
 }
-.card .temperature {
+.daily-forecast .card .temperature {
   font-size: 50px;
   font-weight: 600;
 }
-.card .temperature span {
+.daily-forecast .card .temperature span {
   line-height: 1;
   
 }
-.card .temperature .gradeDynamic {
+.daily-forecast .card .temperature .gradeDynamic {
   margin-right: 0.4rem;
 }
-.card .temperature .grade {
+.daily-forecast .card .temperature .grade {
   font-size: 20px;
   color: #fccf57
 }
-.card .location {
+.daily-forecast .card .location {
   font-weight: 300;
 }
-.card .location .icon {
+.daily-forecast .card .location .icon {
   margin-right: 0.4rem;
 }
-.card .location .name {
+.daily-forecast .card .location .name {
   margin-right: 0.2rem;
 }
-.card .icon svg {
+.daily-forecast .card .icon svg {
   display: block;
   fill: #fccf57
 }
-.cards-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+.next-forecast .styles-module_item-container__a8zaY {
+  padding: 15px;
+  margin-inline: 5px;
 }
-.cards-wrapper .card {
+.next-forecast .styles-module_item-container__a8zaY .text-body .date,
+.next-forecast .styles-module_item-container__a8zaY .text-body .temperature {
+  color: #fff;
+}
+.next-forecast .styles-module_item-container__a8zaY .img-wrapper {
+  width: 70%;
+  margin-left: auto;
+}
+.next-forecast .styles-module_item-container__a8zaY .date {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.next-forecast .styles-module_item-container__a8zaY .temperature {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.next-forecast .styles-module_item-container__a8zaY .temperature span {
+  color: #fccf57;
+  font-size: 15px;
+  vertical-align: top;
+}
+/* .carousel-inner {
+  display: flex;
+  flex-wrap: no-wrap;
+  width: 250%;
+}
+.carousel-inner .card {
   width: 50%;
 }
-.cards-wrapper .card .img-wrapper {
+.carousel-inner .card .img-wrapper {
   text-align: right;
 
 }
-.cards-wrapper .card img {
+.carousel-inner .card img {
   width: 50%;
 }
-.cards-wrapper .card-title {
+.carousel-inner .card-title {
   font-size: 15px;
-}
+} */

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { Card, Carousel, Col, Image, Row } from "react-bootstrap";
+import { Card, Col, Image, Row } from "react-bootstrap";
 import { GeoAlt } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import { Carousel } from "@trendyol-js/react-carousel";
+import ItemTest from "./ItemTest";
+// import { Carousel } from "@trendyol-js/react-carousel";
 
 const DailyForecast = () => {
   // stato del componente
@@ -123,104 +126,31 @@ const DailyForecast = () => {
         </Row>
       )}
 
-      {/* <Carousel activeIndex={index} onSelect={handleSelect}> */}
-      {/* <Row className="justify-content-center g-0">
-        <Col xs={10}>
-          <h2>Next 5 Days</h2>
-          <Carousel slide={false} indicators={false}>
-            <Carousel.Item>
-              <div className="cards-wrapper">
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>10 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>11 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className="cards-wrapper">
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>12 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>13 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className="cards-wrapper">
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>14 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <div className="img-wrapper">
-                    <Card.Img variant="top" src="https://openweathermap.org/img/wn/10d@4x.png" />
-                  </div>
-                  <Card.Body className="py-0 px-3">
-                    <Card.Title>15 Aprile</Card.Title>
-                    <Card.Text>26C</Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
-          </Carousel>
-        </Col>
-      </Row> */}
       {forecast && (
         <Row className="next-forecast justify-content-center g-0">
           <Col xs={12}>
             <h2>Next 5 Days</h2>
-            <Carousel slide={false} indicators={false}>
-              <Carousel.Item>
-                <div className="cards-wrapper">
-                  {forecast.list.map(
-                    (oneday, index) =>
-                      (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (
-                        <Card key={index}>
-                          <div className="img-wrapper">
-                            <Card.Img variant="top" src={require(`../icons/${icons[weather.weather[0].icon]}.png`)} alt="" fluid />
-                          </div>
-                          <Card.Body className="py-0 px-3">
-                            <Card.Title>{oneday.dt_txt}</Card.Title>
-                            <Card.Text>{oneday.main.temp}</Card.Text>
-                          </Card.Body>
-                        </Card>
-                      )
-                  )}
-                </div>
-              </Carousel.Item>
-            </Carousel>
+            {/* forse eliminare cards-wrapper e passare le sue proprietà az */}
+            {/* <Carousel slide={false} indicators={false}>
+              {forecast.list.map(
+                (oneday, index) =>
+                  (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (...)
+              )}
+            </Carousel> */}
+            {/* <Carousel show={2.5} slide={3} swiping={true}> */}
+            <div>
+              <Carousel show={2.5} slide={3} swiping={true}>
+                {forecast.list.map(
+                  (oneday, index) =>
+                    (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (
+                      <>
+                        <ItemTest oneday={oneday} icons={icons} key={index} />
+                      </>
+                    )
+                  // index === 7 || index === 15 || index === 23 || index === 31 || index === 39 ? <Item className="type" oneday={oneday} icons={icons} dynamic={true} /> : ""
+                )}
+              </Carousel>
+            </div>
           </Col>
         </Row>
       )}
