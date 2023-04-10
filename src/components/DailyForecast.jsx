@@ -10,6 +10,7 @@ const DailyForecast = () => {
   // stato del componente
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
+  let arr = [];
   const icons = {
     "01d": "01d",
     "02d": "02d",
@@ -80,8 +81,8 @@ const DailyForecast = () => {
         const data = await response.json();
         console.log(data);
 
-        setForecast(data);
-        // console.log(forecast);
+        setForecast(() => data);
+        console.log(forecast);
       } else {
         alert("Error fetching results");
       }
@@ -130,27 +131,16 @@ const DailyForecast = () => {
         <Row className="next-forecast justify-content-center g-0">
           <Col xs={12}>
             <h2>Next 5 Days</h2>
-            {/* forse eliminare cards-wrapper e passare le sue proprietà az */}
-            {/* <Carousel slide={false} indicators={false}>
-              {forecast.list.map(
-                (oneday, index) =>
-                  (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (...)
+            <Carousel show={2.5} slide={3} swiping={true}>
+              {forecast.list.map((oneday, index) =>
+                // (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (
+                //   <>
+                //     <ItemTest oneday={oneday} icons={icons} key={index} />
+                //   </>
+                // )
+                index === 7 || index === 15 || index === 23 || index === 31 || index === 39 ? <ItemTest oneday={oneday} icons={icons} key={index} /> : null
               )}
-            </Carousel> */}
-            {/* <Carousel show={2.5} slide={3} swiping={true}> */}
-            <div>
-              <Carousel show={2.5} slide={3} swiping={true}>
-                {forecast.list.map(
-                  (oneday, index) =>
-                    (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) && (
-                      <>
-                        <ItemTest oneday={oneday} icons={icons} key={index} />
-                      </>
-                    )
-                  // index === 7 || index === 15 || index === 23 || index === 31 || index === 39 ? <Item className="type" oneday={oneday} icons={icons} dynamic={true} /> : ""
-                )}
-              </Carousel>
-            </div>
+            </Carousel>
           </Col>
         </Row>
       )}
