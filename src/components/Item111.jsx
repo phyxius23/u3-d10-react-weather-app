@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 
 // const Item = ({ oneday, index, icons }) => {
-const Item = (props) => {
+const Item111 = (props) => {
   console.log("oneday.dt_text:", props.oneday.dt_txt);
   console.log("oneday.main.temp:", props.oneday.main.temp);
   console.log("icons:", props.icons[props.oneday.weather[0].icon]);
@@ -17,4 +17,4 @@ const Item = (props) => {
     </Card>
   );
 };
-export default Item;
+export default Item111;

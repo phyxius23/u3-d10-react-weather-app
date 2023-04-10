@@ -2,15 +2,21 @@ import { useEffect, useState } from "react";
 import { Card, Col, Image, Row } from "react-bootstrap";
 import { GeoAlt } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import { Carousel } from "@trendyol-js/react-carousel";
-import CardCarousel from "./CardCarousel";
+// import { Carousel } from "@trendyol-js/react-carousel";
+// import ItemTest from "./ItemTest";
+// import { Carousel } from "@trendyol-js/react-carousel";
 
-const DailyForecast = () => {
+const DailyForecast1 = () => {
   // stato del componente
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
+  const [nextFiveDays, setNextFiveDays] = useState([]);
+  // const nextFiveDays1 = [];
+  // setNextFiveDays((prevState) => {
+  //   // Object.assign would also work
+  //   return { ...prevState, ...updatedValues };
+  // });
 
-  // icone custom
   const icons = {
     "01d": "01d",
     "02d": "02d",
@@ -79,9 +85,21 @@ const DailyForecast = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("data:", data);
+        console.log(data);
 
         setForecast(data);
+
+        forecast.list.forEach((item, index) => {
+          if (index === 7 || index === 15 || index === 23 || index === 31 || index === 39) {
+            // setNextFiveDays(nextFiveDays => (...nextFiveDays, ...item));
+            // setNextFiveDays((nextFiveDays) => {
+            //   // Object.assign would also work
+            //   return { ...nextFiveDays, ...item };
+            // });
+            // nextFiveDays1.push(item);
+            setNextFiveDays(item);
+          }
+        });
       } else {
         alert("Error fetching results");
       }
@@ -126,21 +144,21 @@ const DailyForecast = () => {
         </Row>
       )}
 
-      {forecast && (
+      {/* {nextFiveDays && (
         <Row className="next-forecast justify-content-center g-0">
           <Col xs={12}>
             <h2>Next 5 Days</h2>
-            <Carousel show={2.5} slide={3} swiping={true} swipinp={true} rightArrow={true} leftArrow={true}>
-              {forecast.list.map((oneday, index) => (
+            <Carousel show={2.5} slide={3} swiping={true}>
+              {nextFiveDays.list.map((oneday, index) => (
                 <>
-                  <CardCarousel oneday={oneday} icons={icons} index={index} />
+                  <ItemTest oneday={oneday} icons={icons} key={index} />
                 </>
               ))}
             </Carousel>
           </Col>
         </Row>
-      )}
+      )} */}
     </div>
   );
 };
-export default DailyForecast;
+export default DailyForecast1;
