@@ -53,9 +53,9 @@ const Search = () => {
           <Col xs={9} className="mx-auto mt-3">
             {cities.map((city, index) => (
               <div key={index}>
-                <Link to={`/city/${city.local_names.it}`}>
+                <Link to={`/city/${city.name}`}>
                   <Button onClick={() => dispatch({ type: "ADD_CITY", payload: city })}>
-                    {city.local_names.it}, {city.country}
+                    {city.name}, {city.country}
                   </Button>
                 </Link>
               </div>

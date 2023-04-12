@@ -13,7 +13,8 @@ const CardCarousel = ({ oneday, index, icons }) => {
   return (
     <>
       <div className="img-wrapper" key={index}>
-        <img src={require(`../icons/${icons[oneday.weather[0].icon]}.png`)} className="img-fluid" alt="" />
+        {/* <img src={require(`../icons/${icons[oneday.weather[0].icon]}.png`)} className="img-fluid" alt="" /> */}
+        <img src={require(`../icons/${oneday.weather[0].icon}.png`)} className="img-fluid" alt="" />
       </div>
       <div className="text-body">
         <p className="date">
